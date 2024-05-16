@@ -13,10 +13,22 @@ data class MultiplePermissionLauncher(
     val hasAllPermissions: Boolean,
     val showRational: Boolean,
     val showSettings: Boolean,
-    val requestPermissions: () -> Unit,
-    val hideRational: () -> Unit,
-    val hideSettings: () -> Unit,
-)
+    private val requestPermissions: () -> Unit,
+    private val hideRational: () -> Unit,
+    private val hideSettings: () -> Unit,
+) {
+    fun requestPermissions() {
+        requestPermissions.invoke()
+    }
+
+    fun hideRational() {
+        hideRational.invoke()
+    }
+
+    fun hideSettings() {
+        hideSettings.invoke()
+    }
+}
 
 @Composable
 fun rememberMultiplePermissionLauncher(

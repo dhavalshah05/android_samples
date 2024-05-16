@@ -13,10 +13,22 @@ data class SinglePermissionLauncher(
     val hasPermission: Boolean,
     val showRational: Boolean,
     val showSettings: Boolean,
-    val requestPermissions: () -> Unit,
-    val hideRational: () -> Unit,
-    val hideSettings: () -> Unit,
-)
+    private val requestPermission: () -> Unit,
+    private val hideRational: () -> Unit,
+    private val hideSettings: () -> Unit,
+) {
+    fun requestPermission() {
+        requestPermission.invoke()
+    }
+
+    fun hideRational() {
+        hideRational.invoke()
+    }
+
+    fun hideSettings() {
+        hideSettings.invoke()
+    }
+}
 
 @Composable
 fun rememberSinglePermissionLauncher(permission: String): SinglePermissionLauncher {
@@ -56,7 +68,7 @@ fun rememberSinglePermissionLauncher(permission: String): SinglePermissionLaunch
             hasPermission = hasPermission.value,
             showRational = showRational.value,
             showSettings = showSettings.value,
-            requestPermissions = {
+            requestPermission = {
                 permissionLauncher.launch(permission)
             },
             hideRational = {

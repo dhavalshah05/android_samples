@@ -23,4 +23,5 @@ dependencies {
     implementation(libs.coroutines.android)
 
     implementation(libs.nitrozenAndroid)
+    implementation(projects.common.logging)
 }

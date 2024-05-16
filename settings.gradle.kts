@@ -19,4 +19,9 @@ dependencyResolutionManagement {
     }
 }
 
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
+// Apps
 include(":apps:runtimePermissions")
+// Common
+include(":common:logging")

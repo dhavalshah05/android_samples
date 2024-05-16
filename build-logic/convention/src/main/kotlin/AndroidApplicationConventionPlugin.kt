@@ -64,14 +64,14 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
         extensions.configure<ApplicationExtension> {
             signingConfigs {
                 create(SIGNING_KEY_DEBUG) {
-                    storeFile = file("../keys/debug.keystore")
+                    storeFile = file("${rootDir.absolutePath}/keys/debug.keystore")
                     storePassword = "android"
                     keyAlias = "androiddebugkey"
                     keyPassword = "android"
                 }
 
                 create(SIGNING_KEY_RELEASE) {
-                    storeFile = file("../keys/debug.keystore")
+                    storeFile = file("${rootDir.absolutePath}/keys/debug.keystore")
                     storePassword = "android"
                     keyAlias = "androiddebugkey"
                     keyPassword = "android"

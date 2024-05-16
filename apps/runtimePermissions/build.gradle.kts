@@ -15,8 +15,8 @@ dependencies {
     // AndroidX
     implementation(libs.androidX.coreKtx)
     implementation(libs.androidX.appCompat)
-    implementation(libs.androidX.constraintLayout)
     implementation(libs.androidX.lifecycle.viewModel)
+    implementation(libs.androidX.activityCompose)
 
     // Coroutine
     implementation(libs.coroutines.core)

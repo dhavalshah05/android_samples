@@ -1,5 +1,6 @@
 package com.sample.runtimePermission
 
+import android.Manifest
 import android.content.Intent
 import android.content.Intent.CATEGORY_DEFAULT
 import android.content.Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS
@@ -15,7 +16,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
+import com.common.logging.MyLogger
 import com.fynd.nitrozen.components.appbar.NitrozenAppBar
 import com.fynd.nitrozen.components.button.text.NitrozenTextButton
 import com.fynd.nitrozen.components.dialog.Default
@@ -37,7 +40,15 @@ class RuntimePermissionActivity : AppCompatActivity() {
 
     @Composable
     private fun RuntimePermissionScreen() {
-        val cameraPermissionLauncher = rememberCameraPermissionLauncher()
+        val permissionLauncher = rememberMultiplePermissionLauncher(
+            listOf(Manifest.permission.CAMERA, Manifest.permission.ACCESS_COARSE_LOCATION)
+        )
+
+        LaunchedEffect(permissionLauncher) {
+            MyLogger.d("""
+                permissionLauncher - $permissionLauncher
+            """.trimIndent())
+        }
 
         Scaffold(
             backgroundColor = NitrozenTheme.colors.background,
@@ -53,17 +64,17 @@ class RuntimePermissionActivity : AppCompatActivity() {
                 NitrozenTextButton(
                     text = "Open Camera",
                     onClick = {
-                        cameraPermissionLauncher.requestPermissions()
+                        permissionLauncher.requestPermissions()
                     }
                 )
             }
 
-            if (cameraPermissionLauncher.showRational) {
+            if (permissionLauncher.showRational) {
                 NitrozenDialog(
                     title = "Camera access is required",
                     subTitle = "Give camera access to use this app",
                     onDismissRequest = {
-                        cameraPermissionLauncher.hideRational.invoke()
+                        permissionLauncher.hideRational.invoke()
                     },
                     configuration = NitrozenDialogConfiguration.Default.copy(
                         dismissOnBackPress = true,
@@ -72,21 +83,21 @@ class RuntimePermissionActivity : AppCompatActivity() {
                     positiveLabel = "OK",
                     negativeLabel = "Cancel",
                     positiveButtonClick = {
-                        cameraPermissionLauncher.hideRational.invoke()
-                        cameraPermissionLauncher.requestPermissions.invoke()
+                        permissionLauncher.hideRational.invoke()
+                        permissionLauncher.requestPermissions.invoke()
                     },
                     negativeButtonClick = {
-                        cameraPermissionLauncher.hideRational.invoke()
+                        permissionLauncher.hideRational.invoke()
                     }
                 )
             }
 
-            if (cameraPermissionLauncher.showSettingsToGrantPermission) {
+            if (permissionLauncher.showSettings) {
                 NitrozenDialog(
                     title = "Camera access is required",
                     subTitle = "Open settings to give access to permission",
                     onDismissRequest = {
-                        cameraPermissionLauncher.hideSettingsToGrantPermission.invoke()
+                        permissionLauncher.hideSettings.invoke()
                     },
                     configuration = NitrozenDialogConfiguration.Default.copy(
                         dismissOnBackPress = true,
@@ -94,7 +105,7 @@ class RuntimePermissionActivity : AppCompatActivity() {
                     ),
                     positiveLabel = "Open Settings",
                     positiveButtonClick = {
-                        cameraPermissionLauncher.hideSettingsToGrantPermission.invoke()
+                        permissionLauncher.hideSettings.invoke()
                         openAppSettings()
                     }
                 )

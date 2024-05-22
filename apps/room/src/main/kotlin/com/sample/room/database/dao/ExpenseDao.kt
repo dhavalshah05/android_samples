@@ -1,7 +1,6 @@
 package com.sample.room.database.dao
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Query
 import androidx.room.Upsert
 import com.sample.room.database.entity.ExpenseEntity
@@ -9,16 +8,13 @@ import com.sample.room.database.entity.ExpenseEntity
 @Dao
 interface ExpenseDao {
     @Upsert
-    fun upsertAll(vararg items: ExpenseEntity)
+    fun upsert(item: ExpenseEntity): Long
 
-    @Delete
-    fun delete(item: ExpenseEntity)
+    @Upsert
+    fun upsertAll(vararg items: ExpenseEntity): List<Long>
 
     @Query("DELETE FROM ExpenseEntity WHERE id = :id")
-    fun delete(id: Long)
-
-    @Query("DELETE FROM ExpenseEntity")
-    fun deleteAll()
+    fun deleteExpenseById(id: Long)
 
     @Query("SELECT * FROM ExpenseEntity")
     fun getAll(): List<ExpenseEntity>

@@ -1,4 +1,4 @@
-package com.sample.room.database.entity
+package com.sample.room.database.expense
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

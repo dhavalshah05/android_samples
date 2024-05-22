@@ -1,4 +1,4 @@
-package com.sample.room.database.entity
+package com.sample.room.database.expense
 
 enum class ExpenseType {
     RECURRING,

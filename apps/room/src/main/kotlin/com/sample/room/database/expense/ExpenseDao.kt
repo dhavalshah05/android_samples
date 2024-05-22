@@ -1,9 +1,8 @@
-package com.sample.room.database.dao
+package com.sample.room.database.expense
 
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Upsert
-import com.sample.room.database.entity.ExpenseEntity
 
 @Dao
 interface ExpenseDao {

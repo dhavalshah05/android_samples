@@ -2,8 +2,8 @@ package com.sample.room.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.sample.room.database.dao.ExpenseDao
-import com.sample.room.database.entity.ExpenseEntity
+import com.sample.room.database.expense.ExpenseDao
+import com.sample.room.database.expense.ExpenseEntity
 
 @Database(
     version = 1,

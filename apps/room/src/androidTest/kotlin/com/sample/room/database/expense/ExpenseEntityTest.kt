@@ -1,11 +1,9 @@
-package com.sample.room
+package com.sample.room.database.expense
 
 import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import com.sample.room.database.AppDatabase
-import com.sample.room.database.dao.ExpenseDao
-import com.sample.room.database.entity.ExpenseEntity
 import org.junit.After
 import org.junit.Assert
 import org.junit.Before

@@ -9,4 +9,5 @@ data class ExpenseEntity(
     val id: Long,
     val amount: Int,
     val description: String,
+    val type: ExpenseType = ExpenseType.NON_RECURRING,
 )

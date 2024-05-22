@@ -5,20 +5,24 @@ targetSdk = "33"
 versionCode = "1"
 versionName = "1.0"
 
+# Plugins
+ksp = "1.9.23-1.0.20"
 android = "8.3.2"
 kotlin = "1.9.23"
+sqlDelight = "1.5.4"
+daggerHilt = "2.44"
+
 coroutine = "1.7.1"
 ktor = "2.3.1"
 kotest = "5.6.2"
 mockk = "1.13.5"
-sqlDelight = "1.5.4"
 turbine = "1.0.0"
 navigation = "2.6.0"
 composeBom = "2024.05.00"
 composeKotlinCompiler = "1.5.13"
-daggerHilt = "2.44"
 httpLoggingInterceptor = "4.10.0"
 hilt = "1.0.0"
+room = "2.6.1"
 
 [plugins]
 
@@ -29,6 +33,7 @@ kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", versi
 daggerHilt = { id = "com.google.dagger.hilt.android", version.ref = "daggerHilt" }
 sqlDelight = { id = "com.squareup.sqldelight", version.ref = "sqlDelight" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 
 [libraries]
 
@@ -94,6 +99,12 @@ nitrozenAndroid = { module = "com.github.gofynd:nitrozen-android", version = "80
 
 # Timber
 timber = { module = "com.jakewharton.timber:timber", version = "5.0.1" }
+
+# Room
+room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
+room-testing = { module = "androidx.room:room-testing", version.ref = "room" }
 
 # Gradle Plugins
 gradlePlugin-android = { module = "com.android.tools.build:gradle", version.ref = "android" }

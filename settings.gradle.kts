@@ -24,5 +24,6 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 // Apps
 include(":apps:runtimePermissions")
 include(":apps:foregroundService")
+include(":apps:room")
 // Common
 include(":common:logging")

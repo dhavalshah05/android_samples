@@ -23,4 +23,16 @@ interface ManyToManyRelationDao {
     @Transaction
     @Query("SELECT * FROM PlaylistEntity")
     fun getPlaylistsWithSongs(): List<PlaylistWithSongs>
+
+    @Transaction
+    @Query("""
+        select PlaylistEntity.id as playlistId,
+        PlaylistEntity.name as playlistName,
+        count(SongXPlaylistEntity.songId) as songCount
+        from PlaylistEntity
+        left join SongXPlaylistEntity on PlaylistEntity.id = SongXPlaylistEntity.playlistId
+        group by PlaylistEntity.id, PlaylistEntity.name
+    """)
+    fun getPlaylistsWithSongCount(): List<PlaylistWithSongCount>
 }
+

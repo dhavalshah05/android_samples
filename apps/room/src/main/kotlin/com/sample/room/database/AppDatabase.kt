@@ -4,6 +4,9 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.sample.room.database.expense.ExpenseDao
 import com.sample.room.database.expense.ExpenseEntity
+import com.sample.room.database.oneToMany.OneToManyRelationDao
+import com.sample.room.database.oneToMany.SchoolEntity
+import com.sample.room.database.oneToMany.StudentEntity
 import com.sample.room.database.oneToOne.LoginCredentialEntity
 import com.sample.room.database.oneToOne.OneToOneRelationDao
 import com.sample.room.database.oneToOne.UserEntity
@@ -14,10 +17,13 @@ import com.sample.room.database.oneToOne.UserEntity
         ExpenseEntity::class,
         UserEntity::class,
         LoginCredentialEntity::class,
+        SchoolEntity::class,
+        StudentEntity::class,
     ]
 )
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun expenseDao(): ExpenseDao
     abstract fun oneToOneRelationDao(): OneToOneRelationDao
+    abstract fun oneToManyRelationDao(): OneToManyRelationDao
 }

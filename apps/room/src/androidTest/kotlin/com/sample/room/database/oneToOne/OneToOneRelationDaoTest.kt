@@ -4,9 +4,11 @@ import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import com.sample.room.database.AppDatabase
+import org.junit.After
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
+import java.io.IOException
 
 class OneToOneRelationDaoTest {
 
@@ -19,6 +21,12 @@ class OneToOneRelationDaoTest {
         db = Room.inMemoryDatabaseBuilder(context, AppDatabase::class.java)
             .build()
         oneToOneRelationDao = db.oneToOneRelationDao()
+    }
+
+    @After
+    @Throws(IOException::class)
+    fun closeDb() {
+        db.close()
     }
 
     @Test

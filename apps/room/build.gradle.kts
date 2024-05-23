@@ -34,8 +34,8 @@ dependencies {
     implementation(libs.room.ktx)
     testImplementation(libs.room.testing)
 
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test:rules:1.5.0")
-    androidTestImplementation("androidx.test:core:1.5.0")
+    testImplementation(libs.junit.junit4)
+    androidTestImplementation(libs.androidX.test.junit)
+    androidTestImplementation(libs.androidX.test.core)
+    androidTestImplementation(libs.androidX.test.rules)
 }

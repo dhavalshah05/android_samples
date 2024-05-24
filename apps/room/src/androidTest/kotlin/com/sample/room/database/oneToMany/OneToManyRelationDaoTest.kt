@@ -63,4 +63,20 @@ class OneToManyRelationDaoTest {
         Assert.assertEquals(2, result.size)
         Assert.assertTrue(result.all { it.school.id == schoolId })
     }
+
+    @Test
+    fun getStudentsWithSchoolName() {
+        // Arrange
+        val schoolId = oneToManyRelationDao.upsertSchool(SchoolEntity(name = "Lotus"))
+
+        oneToManyRelationDao.upsertStudent(StudentEntity(name = "Jon", schoolId = schoolId))
+        oneToManyRelationDao.upsertStudent(StudentEntity(name = "Bran", schoolId = schoolId))
+
+        // Act
+        val result = oneToManyRelationDao.getStudentsWithSchoolName()
+
+        // Assert
+        Assert.assertEquals(2, result.size)
+        Assert.assertTrue(result.all { it.schoolName == "Lotus" })
+    }
 }

@@ -20,4 +20,12 @@ interface OneToManyRelationDao {
     @Transaction
     @Query("SELECT * FROM StudentEntity")
     fun getStudentWithSchool(): List<StudentWithSchool>
+
+    @Query("""
+        select StudentEntity.*,
+        SchoolEntity.name as schoolName
+        from StudentEntity
+        inner join SchoolEntity on StudentEntity.schoolId = SchoolEntity.id
+    """)
+    fun getStudentsWithSchoolName(): List<StudentWithSchoolName>
 }

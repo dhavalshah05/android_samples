@@ -24,6 +24,7 @@ httpLoggingInterceptor = "4.10.0"
 hilt = "1.0.0"
 room = "2.6.1"
 lifecycle = "2.8.0"
+voyager = "1.0.0" # 1.1.0-beta01
 
 [plugins]
 
@@ -95,6 +96,7 @@ androidX-constraintLayout = { module = "androidx.constraintlayout:constraintlayo
 androidX-workRuntime = { module = "androidx.work:work-runtime-ktx", version = "2.8.1"}
 androidX-activityCompose = { module = "androidx.activity:activity-compose", version = "1.9.0" }
 androidX-lifecycle-viewModel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+androidX-lifecycle-viewModelCompose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle" }
 androidX-lifecycle-runtimeCompose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycle" }
 
 # Nitrozen
@@ -108,6 +110,11 @@ room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 room-testing = { module = "androidx.room:room-testing", version.ref = "room" }
+
+# Voyager
+voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
+voyager-transitions = { module = "cafe.adriel.voyager:voyager-transitions", version.ref = "voyager" }
+voyager-bottomSheetNavigator = { module = "cafe.adriel.voyager:voyager-bottom-sheet-navigator", version.ref = "voyager" }
 
 # Testing
 junit-junit4 = { module = "junit:junit", version = "4.13.2" }

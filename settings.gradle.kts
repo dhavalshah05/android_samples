@@ -27,5 +27,6 @@ include(":apps:foregroundService")
 include(":apps:room")
 include(":apps:composeNavigation:common")
 include(":apps:composeNavigation:graph")
+include(":apps:composeNavigation:voyager")
 // Common
 include(":common:logging")

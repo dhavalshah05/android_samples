@@ -2,6 +2,7 @@ package com.sample.composeNavigation.common.screen.selectCountry
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
@@ -49,7 +50,9 @@ private fun SelectCountryScreen(
     Scaffold(
         topBar = {
             NitrozenAppBar(title = "Select Country")
-        }
+        },
+        modifier = Modifier
+            .fillMaxHeight(fraction = 0.9f)
     ) {
         Column(
             modifier = Modifier

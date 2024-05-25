@@ -11,7 +11,7 @@ import com.sample.composeNavigation.common.screen.selectCountry.SelectCountryScr
 class VoSelectCountryScreen : Screen {
 
     override val key: ScreenKey
-        get() = uniqueScreenKey
+        get() = this.javaClass.name
 
     @Composable
     override fun Content() {

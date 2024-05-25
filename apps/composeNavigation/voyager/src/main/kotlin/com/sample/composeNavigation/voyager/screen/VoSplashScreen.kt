@@ -14,7 +14,7 @@ import com.sample.composeNavigation.common.screen.splash.SplashScreenWrapper
 class VoSplashScreen : Screen {
 
     override val key: ScreenKey
-        get() = uniqueScreenKey
+        get() = this.javaClass.name
 
     @Composable
     override fun Content() {

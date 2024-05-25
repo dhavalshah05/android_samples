@@ -17,12 +17,13 @@ ktor = "2.3.1"
 kotest = "5.6.2"
 mockk = "1.13.5"
 turbine = "1.0.0"
-navigation = "2.6.0"
+navigation = "2.7.7"
 composeBom = "2024.05.00"
 composeKotlinCompiler = "1.5.13"
 httpLoggingInterceptor = "4.10.0"
 hilt = "1.0.0"
 room = "2.6.1"
+lifecycle = "2.8.0"
 
 [plugins]
 
@@ -70,6 +71,7 @@ turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 # Navigation
 navigation-fragment = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation" }
 navigation-ui = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
+navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigation" }
 
 # Compose
 compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
@@ -90,9 +92,10 @@ hilt-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "hilt" }
 androidX-coreKtx = { module = "androidx.core:core-ktx", version = "1.10.1" }
 androidX-appCompat = { module = "androidx.appcompat:appcompat", version = "1.6.1" }
 androidX-constraintLayout = { module = "androidx.constraintlayout:constraintlayout", version = "2.1.4" }
-androidX-lifecycle-viewModel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version = "2.6.1" }
 androidX-workRuntime = { module = "androidx.work:work-runtime-ktx", version = "2.8.1"}
 androidX-activityCompose = { module = "androidx.activity:activity-compose", version = "1.9.0" }
+androidX-lifecycle-viewModel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+androidX-lifecycle-runtimeCompose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycle" }
 
 # Nitrozen
 nitrozenAndroid = { module = "com.github.gofynd:nitrozen-android", version = "80ee8f1"}

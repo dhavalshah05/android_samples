@@ -25,5 +25,7 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(":apps:runtimePermissions")
 include(":apps:foregroundService")
 include(":apps:room")
+include(":apps:composeNavigation:common")
+include(":apps:composeNavigation:graph")
 // Common
 include(":common:logging")

@@ -80,6 +80,7 @@ compose-material = { module = "androidx.compose.material:material" }
 compose-material3 = { module = "androidx.compose.material3:material3" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 compose-ui-toolingPreview = { module = "androidx.compose.ui:ui-tooling-preview" }
+compose-material-navigation = { module = "androidx.compose.material:material-navigation", version = "1.7.0-beta01" }
 
 # Dagger Hilt
 dagger-hiltAndroid = { module = "com.google.dagger:hilt-android", version.ref = "daggerHilt" }

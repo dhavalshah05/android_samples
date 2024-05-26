@@ -25,6 +25,9 @@ dependencies {
     // Navigation
     implementation(libs.navigation.compose)
     implementation(libs.ktor.serialization)
+    implementation(libs.compose.material.navigation) {
+        because("To support bottomSheet as navigation destination")
+    }
 
     implementation(libs.nitrozenAndroid)
     implementation(projects.common.logging)

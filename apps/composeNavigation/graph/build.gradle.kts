@@ -24,6 +24,7 @@ dependencies {
 
     // Navigation
     implementation(libs.navigation.compose)
+    implementation(libs.ktor.serialization)
 
     implementation(libs.nitrozenAndroid)
     implementation(projects.common.logging)

@@ -22,6 +22,10 @@ dependencies {
     implementation(libs.coroutines.core)
     implementation(libs.coroutines.android)
 
+    // Paging
+    implementation(libs.paging.runtime)
+    implementation(libs.paging.compose)
+
     implementation(libs.nitrozenAndroid)
     implementation(projects.common.logging)
 }

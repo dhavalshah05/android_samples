@@ -25,6 +25,7 @@ hilt = "1.0.0"
 room = "2.6.1"
 lifecycle = "2.8.0"
 voyager = "1.0.0" # 1.1.0-beta01
+paging = "3.3.0"
 
 [plugins]
 
@@ -116,6 +117,10 @@ room-testing = { module = "androidx.room:room-testing", version.ref = "room" }
 voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
 voyager-transitions = { module = "cafe.adriel.voyager:voyager-transitions", version.ref = "voyager" }
 voyager-bottomSheetNavigator = { module = "cafe.adriel.voyager:voyager-bottom-sheet-navigator", version.ref = "voyager" }
+
+# Paging
+paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "paging" }
+paging-compose = { module = "androidx.paging:paging-compose", version.ref = "paging" }
 
 # Testing
 junit-junit4 = { module = "junit:junit", version = "4.13.2" }

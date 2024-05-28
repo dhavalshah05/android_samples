@@ -7,9 +7,15 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
+import androidx.compose.material.pullrefresh.PullRefreshIndicator
+import androidx.compose.material.pullrefresh.pullRefresh
+import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -22,6 +28,7 @@ import com.fynd.nitrozen.theme.NitrozenTheme
 import com.fynd.nitrozen.utils.extensions.clickableWithoutRipple
 import com.sample.paging.R
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun RecipesScreen(
     viewModel: RecipeViewModel,
@@ -35,46 +42,69 @@ fun RecipesScreen(
     ) { paddingValues ->
 
         val pagingData = viewModel.recipes.collectAsLazyPagingItems()
+        val isSwipeRefreshing = remember {
+            mutableStateOf(false)
+        }
+        val pullRefreshState = rememberPullRefreshState(
+            refreshing = isSwipeRefreshing.value,
+            onRefresh = {
+                isSwipeRefreshing.value = true
+                pagingData.refresh()
+            }
+        )
 
-        LazyColumn(
+        Box(
             modifier = Modifier
                 .padding(paddingValues)
+                .pullRefresh(pullRefreshState)
                 .fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(16.dp, Alignment.Top),
         ) {
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(16.dp, Alignment.Top),
+            ) {
 
-            if (pagingData.loadState.refresh is LoadState.Loading) {
-                item {
-                    LoadingBody()
+                if (pagingData.loadState.refresh is LoadState.Loading && !isSwipeRefreshing.value) {
+                    item {
+                        LoadingBody()
+                    }
                 }
-            }
 
-            if (pagingData.loadState.refresh is LoadState.NotLoading) {
-                items(
-                    count = pagingData.itemCount,
-                    key = pagingData.itemKey { it }
-                ) {index ->
+                if (pagingData.loadState.refresh is LoadState.NotLoading) {
+                    isSwipeRefreshing.value = false
+                    items(
+                        count = pagingData.itemCount,
+                        key = pagingData.itemKey { it }
+                    ) {index ->
 
-                    // This is very important. If you use peek here to get the item, loading will not work.
-                    pagingData[index]?.let { item ->
-                        Text(
-                            text = item,
-                            style = NitrozenTheme.typography.bodySmall,
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .clickableWithoutRipple(onRecipeClick)
-                                .padding(4.dp),
-                        )
+                        // This is very important. If you use peek here to get the item, loading will not work.
+                        pagingData[index]?.let { item ->
+                            Text(
+                                text = item,
+                                style = NitrozenTheme.typography.bodySmall,
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .clickableWithoutRipple(onRecipeClick)
+                                    .padding(4.dp),
+                            )
+                        }
+                    }
+                }
+
+                if (pagingData.loadState.append is LoadState.Loading) {
+                    item {
+                        LoadingFooter()
                     }
                 }
             }
 
-            if (pagingData.loadState.append is LoadState.Loading) {
-                item {
-                    LoadingFooter()
-                }
-            }
+            PullRefreshIndicator(
+                refreshing = isSwipeRefreshing.value,
+                state = pullRefreshState,
+                modifier = Modifier.align(Alignment.TopCenter)
+            )
         }
 
     }

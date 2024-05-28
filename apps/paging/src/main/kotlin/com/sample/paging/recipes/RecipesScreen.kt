@@ -1,4 +1,4 @@
-package com.sample.paging
+package com.sample.paging.recipes
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -19,10 +19,13 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
 import com.fynd.nitrozen.components.appbar.NitrozenAppBar
 import com.fynd.nitrozen.theme.NitrozenTheme
+import com.fynd.nitrozen.utils.extensions.clickableWithoutRipple
+import com.sample.paging.R
 
 @Composable
 fun RecipesScreen(
-    viewModel: RecipeViewModel
+    viewModel: RecipeViewModel,
+    onRecipeClick: () -> Unit,
 ) {
     Scaffold(
         backgroundColor = NitrozenTheme.colors.background,
@@ -31,7 +34,7 @@ fun RecipesScreen(
         }
     ) { paddingValues ->
 
-        val pagingData = viewModel.recipesFlow.collectAsLazyPagingItems()
+        val pagingData = viewModel.recipes.collectAsLazyPagingItems()
 
         LazyColumn(
             modifier = Modifier
@@ -60,6 +63,7 @@ fun RecipesScreen(
                             style = NitrozenTheme.typography.bodySmall,
                             modifier = Modifier
                                 .fillMaxSize()
+                                .clickableWithoutRipple(onRecipeClick)
                                 .padding(4.dp),
                         )
                     }

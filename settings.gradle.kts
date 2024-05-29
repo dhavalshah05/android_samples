@@ -29,5 +29,6 @@ include(":apps:composeNavigation:common")
 include(":apps:composeNavigation:graph")
 include(":apps:composeNavigation:voyager")
 include(":apps:paging")
+include(":apps:compose:oneTimeEvents")
 // Common
 include(":common:logging")

@@ -11,7 +11,7 @@ class CollapsingToolbarActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             NitrozenTheme {
-
+                CollapsingToolbarScreen()
             }
         }
     }

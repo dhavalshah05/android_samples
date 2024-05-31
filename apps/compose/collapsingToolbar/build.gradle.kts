@@ -22,6 +22,9 @@ dependencies {
     implementation(libs.coroutines.core)
     implementation(libs.coroutines.android)
 
+    // Material 3
+    implementation(libs.compose.material3)
+
     implementation(libs.nitrozenAndroid)
     implementation(projects.common.logging)
 }

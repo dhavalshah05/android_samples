@@ -31,5 +31,6 @@ include(":apps:composeNavigation:voyager")
 include(":apps:paging")
 include(":apps:compose:oneTimeEvents")
 include(":apps:compose:collapsingToolbar")
+include(":apps:compose:bottomSheet")
 // Common
 include(":common:logging")
